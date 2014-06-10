@@ -23,7 +23,7 @@ $(document).ready(function(){
     var details = $('#results').delegate('li', 'click', function(f){
       f.preventDefault();
       var inner = $(f.target).data("imdbid");
-      $(this).toggle();
+
       
       var poster = $.ajax({
         url: "http://www.omdbapi.com/",
@@ -34,6 +34,7 @@ $(document).ready(function(){
       });
 
       poster.done(function(data){
+        $('#movieDetails').html("");
         if (data["Poster"] == "N/A"){
           $('#movieDetails').append("<p>No picture available</p>");
         }
